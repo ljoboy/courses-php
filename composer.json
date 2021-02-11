@@ -1,0 +1,21 @@
+{
+    "authors": [
+        {
+            "name": "Dark Angel",
+            "email": "jonathanyombo@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "beta",
+    "name": "ljoboy/courses",
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "php": "7.4"
+    },
+    "type": "project"
+}
