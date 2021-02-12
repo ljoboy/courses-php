@@ -20,6 +20,11 @@ class Router
     public string $url;
 
     /**
+     * @var array
+     */
+    public array $routes;
+
+    /**
      * Router constructor.
      */
     public function __construct()
@@ -56,5 +61,27 @@ class Router
         $urlSanitized = is_array($urlSanitized) ? $urlSanitized[0] : $urlSanitized;
 
         return trim($urlSanitized, '/');
+    }
+
+    /**
+     * for the get Request_method
+     *
+     * @param string $path
+     * @param string $action
+     */
+    public function get(string $path, string $action)
+    {
+        $this->routes['GET'][] = new Route($path, $action);
+    }
+
+    /**
+     * for the post Request_method
+     *
+     * @param string $path
+     * @param string $action
+     */
+    public function post(string $path, string $action)
+    {
+        $this->routes['POST'] = new Route($path, $action);
     }
 }

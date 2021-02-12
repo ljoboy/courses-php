@@ -1,6 +1,6 @@
 <?php
 /**
- * FILE ${FILE_NAME}
+ * FILE Route.php
  *
  * @author Dark Angel <jonathanyombo@gmail.com>
  * @copyright DATE 2/12/2021 - 10:49 AM
