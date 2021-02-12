@@ -26,6 +26,10 @@ class Route
      * @var string
      */
     public string $action;
+    /**
+     * @var array
+     */
+    public array $matches_url;
 
     /**
      * Route constructor.
@@ -34,7 +38,24 @@ class Route
      */
     public function __construct(string $path, string $action)
     {
-        $this->path = $path;
+        $this->path = trim($path, '/');
         $this->action = $action;
+    }
+
+    /**
+     * @param string $url
+     * @return bool
+     */
+    public function matches(string $url): bool
+    {
+        $path = preg_replace('#:([\w]+)', '([^/]+)', $this->path);
+        $pathToMatch = "#^$path$#";
+
+        if (preg_match($pathToMatch, $url, $matches)) {
+            $this->matches_url = $matches;
+            return true;
+        }
+
+        return false;
     }
 }
