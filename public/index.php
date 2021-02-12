@@ -8,12 +8,13 @@
 
 require '../vendor/autoload.php';
 
+use App\Controllers\BlogController;
 use Router\Router;
 
 
 $router = new Router();
 
-$router->get('/', 'BlogController@index');
-$router->get('/posts/:id', 'BlogController@show');
+$router->get('/', [BlogController::class, 'index']);
+$router->get('/posts/:id', [BlogController::class, 'show']);
 
 $router->run();
