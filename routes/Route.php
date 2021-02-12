@@ -23,9 +23,9 @@ class Route
      */
     public string $path;
     /**
-     * @var string
+     * @var array
      */
-    public string $action;
+    public array $action;
     /**
      * @var array
      */
@@ -34,9 +34,9 @@ class Route
     /**
      * Route constructor.
      * @param string $path
-     * @param string $action
+     * @param array $action
      */
-    public function __construct(string $path, string $action)
+    public function __construct(string $path, array $action)
     {
         $this->path = trim($path, '/');
         $this->action = $action;
@@ -48,7 +48,7 @@ class Route
      */
     public function matches(string $url): bool
     {
-        $path = preg_replace('#:([\w]+)', '([^/]+)', $this->path);
+        $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
         $pathToMatch = "#^$path$#";
 
         if (preg_match($pathToMatch, $url, $matches)) {
@@ -57,5 +57,16 @@ class Route
         }
 
         return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function execute()
+    {
+        $controller = new $this->action[0]();
+        $method = $this->action[1];
+
+        return isset($this->matches_url[1]) ? $controller->$method($this->matches_url[1]) : $controller->$method();
     }
 }
