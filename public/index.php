@@ -11,6 +11,8 @@ require '../vendor/autoload.php';
 use App\Controllers\BlogController;
 use Router\Router;
 
+define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
+define('ASSETS', $_SERVER['SCRIPT_NAME'] . DIRECTORY_SEPARATOR);
 
 $router = new Router();
 
