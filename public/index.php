@@ -13,4 +13,7 @@ use Router\Router;
 
 $router = new Router();
 
-$router->show();
+$router->get('/', 'BlogController@index');
+$router->get('/posts/:id', 'BlogController@show');
+
+$router->run();

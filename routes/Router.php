@@ -8,6 +8,8 @@
 
 namespace Router;
 
+use HttpException;
+
 /**
  * Class Router
  * @package Router
@@ -83,5 +85,20 @@ class Router
     public function post(string $path, string $action)
     {
         $this->routes['POST'] = new Route($path, $action);
+    }
+
+    /**
+     * @return string
+     */
+    public function run(): string
+    {
+        foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
+            if ($route->matches($this->url)) {
+                $route->execute();
+            }
+        }
+
+        $http = new HttpException('Not Found !');
+        return $http->getMessage();
     }
 }
