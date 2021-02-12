@@ -8,7 +8,6 @@
 
 namespace Router;
 
-use HttpException;
 
 /**
  * Class Router
@@ -69,9 +68,9 @@ class Router
      * for the get Request_method
      *
      * @param string $path
-     * @param string $action
+     * @param array $action
      */
-    public function get(string $path, string $action)
+    public function get(string $path, array $action)
     {
         $this->routes['GET'][] = new Route($path, $action);
     }
@@ -80,25 +79,25 @@ class Router
      * for the post Request_method
      *
      * @param string $path
-     * @param string $action
+     * @param array $action
      */
-    public function post(string $path, string $action)
+    public function post(string $path, array $action)
     {
         $this->routes['POST'] = new Route($path, $action);
     }
 
     /**
-     * @return string
+     * @return null
      */
-    public function run(): string
+    public function run()
     {
         foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
             if ($route->matches($this->url)) {
                 $route->execute();
+                return null;
             }
         }
-
-        $http = new HttpException('Not Found !');
-        return $http->getMessage();
+        header('HTTP/1.0 404 Not Found');
+        return null;
     }
 }
