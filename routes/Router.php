@@ -43,7 +43,7 @@ class Router
     }
 
     /**
-     * get Url Without Query String
+     * get Url Without Query String and sanitized
      *
      * @param string $url
      * @return string
@@ -52,6 +52,9 @@ class Router
     {
         $urlSanitized = explode('?', $url);
 
-        return is_array($urlSanitized) ? $urlSanitized[0] : $urlSanitized;
+
+        $urlSanitized = is_array($urlSanitized) ? $urlSanitized[0] : $urlSanitized;
+
+        return trim($urlSanitized, '/');
     }
 }
