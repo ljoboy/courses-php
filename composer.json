@@ -11,11 +11,14 @@
     "autoload": {
         "psr-4": {
             "Router\\": "routes/",
-            "App\\": "app/"
+            "App\\": "app/",
+            "Database\\": "database/",
+            "Helper\\": "helpers/"
         }
     },
     "require": {
-        "php": "7.4"
+        "php": "7.4",
+        "ext-pdo": "*"
     },
     "type": "project"
 }
