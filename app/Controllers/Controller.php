@@ -35,7 +35,7 @@ abstract class Controller
         require VIEWS . $path . '.php';
 
         if ($params) {
-            $params = extract($params);
+            extract($params);
             unset($params);
         }
 
