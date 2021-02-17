@@ -14,7 +14,7 @@ namespace App\Controllers;
  * Class Controller
  * @package App\Controllers
  */
-class Controller
+abstract class Controller
 {
     /**
      * Controller constructor.
@@ -28,7 +28,7 @@ class Controller
      * @param string $path
      * @param array|null $params
      */
-    public function view(string $path, array $params = null)
+    protected function view(string $path, array $params = null)
     {
         ob_start();
         $path = str_replace('.', DIRECTORY_SEPARATOR, $path);
