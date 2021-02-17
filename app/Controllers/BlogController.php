@@ -19,7 +19,6 @@ class BlogController extends Controller
     {
         $post = new Post();
         $posts = $post->all();
-        var_dump($posts);die;
         $this->view('blog.index', compact('posts'));
     }
 
@@ -30,7 +29,7 @@ class BlogController extends Controller
 
     public function show(int $id)
     {
-        $posts = $this->db->query('SELECT * FROM posts')->fetchAll();
-        $this->view('blog.show', compact('id'));
+        $post = (new Post())->findById($id);
+        $this->view('blog.show', compact('post'));
     }
 }
