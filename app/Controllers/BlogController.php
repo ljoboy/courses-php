@@ -11,11 +11,15 @@
 namespace App\Controllers;
 
 
+use App\Models\Post;
+
 class BlogController extends Controller
 {
     public function index()
     {
-        $posts = $this->db->query('SELECT * FROM posts ORDER BY created_at DESC')->fetchAll();
+        $post = new Post();
+        $posts = $post->all();
+        var_dump($posts);die;
         $this->view('blog.index', compact('posts'));
     }
 
