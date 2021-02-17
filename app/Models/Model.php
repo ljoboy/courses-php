@@ -51,4 +51,12 @@ abstract class Model
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this));
         return $stmt->fetchAll();
     }
+
+    public function findById(int $id): Model
+    {
+        $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        return $stmt->fetch();
+    }
 }
