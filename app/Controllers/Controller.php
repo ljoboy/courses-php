@@ -36,6 +36,7 @@ class Controller
 
         if ($params) {
             $params = extract($params);
+            unset($params);
         }
 
         $content = ob_get_clean();
