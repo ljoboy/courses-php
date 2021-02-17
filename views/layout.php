@@ -29,7 +29,7 @@
         <!-- Logo -->
         <li>
             <div class="logo-wrapper waves-light">
-                <a href="#"><img src="" class="img-fluid flex-center" alt="logo"></a>
+                <a href="/"><img src="" class="img-fluid flex-center" alt="logo"></a>
             </div>
         </li>
         <!--/. Logo -->
@@ -115,19 +115,16 @@
 
         <!-- Breadcrumb-->
         <div class="breadcrumb-dn">
-            <p>Breadcrumb or page title</p>
+            <p>Mon super blog</p>
         </div>
 
         <ul class="nav navbar-nav float-xs-right">
 
             <li class="nav-item ">
-                <a class="nav-link"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span></a>
+                <a href="/" class="nav-link"><i class="fa fa-home"></i> <span class="hidden-sm-down">Accueil</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="hidden-sm-down">Support</span></a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down">Account</span></a>
+                <a href="/posts" class="nav-link"><i class="fa fa-list"></i> <span class="hidden-sm-down">Articles</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile</a>
