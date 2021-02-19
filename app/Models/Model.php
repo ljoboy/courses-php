@@ -52,7 +52,13 @@ abstract class Model
         return $stmt->fetchAll();
     }
 
-    public function findById(int $id): Model
+    /**
+     * find by id
+     *
+     * @param int $id
+     * @return Model|null
+     */
+    public function findById(int $id): ?Model
     {
         $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $stmt->execute(['id' => $id]);
