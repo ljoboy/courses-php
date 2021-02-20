@@ -65,4 +65,18 @@ abstract class Model
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this));
         return $stmt->fetch();
     }
+
+    /**
+     * @param string $column
+     * @param string $sign
+     * @param string $value
+     * @return array
+     */
+    public function where(string $column, string $sign, string $value): array
+    {
+        $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE {$column} {$sign} :{$column}");
+        $stmt->execute(["{$column}" => $value]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        return $stmt->fetchAll();
+    }
 }
