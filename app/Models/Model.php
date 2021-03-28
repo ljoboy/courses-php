@@ -62,7 +62,7 @@ abstract class Model
     {
         $stmt = $this->db->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $stmt->execute(['id' => $id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        $this->db->setAttribute(PDO::FETCH_CLASS, get_class($this));
         return $stmt->fetch();
     }
 
