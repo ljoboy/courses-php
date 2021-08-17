@@ -16,13 +16,6 @@ namespace App\Controllers;
  */
 abstract class Controller
 {
-    /**
-     * Controller constructor.
-     */
-    public function __construct()
-    {
-
-    }
 
     /**
      * @param string $path

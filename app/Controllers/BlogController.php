@@ -15,10 +15,16 @@ use App\Models\Post;
 
 class BlogController extends Controller
 {
+    public Post $post;
+
+    public function __construct()
+    {
+        $this->post = new Post();
+    }
+
     public function index()
     {
-        $post = new Post();
-        $posts = $post->all();
+        $posts = $this->post->all();
         $this->view('blog.index', compact('posts'));
     }
 
@@ -29,7 +35,7 @@ class BlogController extends Controller
 
     public function show(int $id)
     {
-        $post = (new Post())->findById($id);
+        $post = $this->post->findById($id);
         $this->view('blog.show', compact('post'));
     }
 }

@@ -1,6 +1,11 @@
 <h1>Titre: <?= $post->title ?></h1>
-<p>
+<div>
     <?= $post->content ?>
-</p>
+    <div>
+        <?php foreach ($post->getTags() as $tag): ?>
+        <span class="tag tag-info"><?= $tag->name ?></span>
+        <?php endforeach; ?>
+    </div>
+</div>
 <hr/>
-<small><?= $post->created_at ?></small>
+<small><?= strtoupper($post->formattedCreatedAt()) ?></small>
